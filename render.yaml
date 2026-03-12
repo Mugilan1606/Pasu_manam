@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: pasumanam
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn pasumanam.wsgi:application"
