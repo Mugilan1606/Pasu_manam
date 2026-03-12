@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Online Payment</title>
+
+<link rel="stylesheet" href="/static/css/online.css">
+
+</head>
+
+<body>
+
+<h2>Payment Processing...</h2>
+
+<p>Please wait while we confirm your order.</p>
+
+<script>
+
+let name = "{{name}}";
+let phone = "{{phone}}";
+let address = "{{address}}";
+let product = "{{product}}";
+let quantity = "{{quantity}}";
+let total = "{{total}}";
+
+let message =
+"🛒 New Order Placed\n\n"+
+"👤 Name: "+name+"\n"+
+"📞 Phone: "+phone+"\n"+
+"📍 Address: "+address+"\n"+
+"🥛 Product: "+product+"\n"+
+"📦 Quantity: "+quantity+"\n"+
+"💰 Total Amount: ₹"+total+"\n"+
+"💳 Payment: Online Payment";
+
+let phoneNumber = "916384229507";
+
+let url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+
+
+// 3 seconds wait then alert
+
+setTimeout(function(){
+
+alert("Order Placed Successfully!");
+
+window.open(url,"_blank");
+
+},3000);
+
+</script>
+
+</body>
+
+</html>

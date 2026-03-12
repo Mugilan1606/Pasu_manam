@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin Login</title>
+
+<link rel="stylesheet" href="/static/css/admin.css">
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+<h2>Admin Login</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input type="text" name="username" placeholder="Admin ID" required>
+
+<input type="password" name="password" placeholder="Password" required>
+
+<button type="submit">Login</button>
+
+</form>
+
+<p style="color:red;">{{error}}</p>
+
+</div>
+
+</body>
+
+</html>

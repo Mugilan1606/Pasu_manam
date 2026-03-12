@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin Dashboard</title>
+
+<link rel="stylesheet" href="/static/css/dashboard.css">
+
+</head>
+
+<body>
+
+<h1>Admin Dashboard</h1>
+
+<table border="1" cellpadding="10">
+
+<tr>
+<th>Name</th>
+<th>Phone</th>
+<th>Address</th>
+<th>Product</th>
+<th>Quantity</th>
+<th>Total</th>
+<th>Payment</th>
+<th>Date</th>
+<th>Delete</th>
+</tr>
+
+{% for order in orders %}
+
+<tr>
+
+<td>{{ order.name }}</td>
+
+<td>{{ order.phone }}</td>
+
+<td>{{ order.address }}</td>
+
+<td>{{ order.product }}</td>
+
+<td>{{ order.quantity }}</td>
+
+<td>₹ {{ order.total }}</td>
+
+<td>{{ order.payment_method }}</td>
+<td>{{ order.date|date:"d-m-Y h:i A" }}</td>
+
+
+<td>
+<a href="/delete/{{ order.id }}/" onclick="return confirm('Delete this order?')">
+Delete
+</a>
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+<td colspan="9">No Orders Yet</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+
+<br><br>
+
+
+<h2>Payment Summary</h2>
+
+<p>
+Online Payment Total : ₹ 
+{{ online_total.total__sum|default:0 }}
+</p>
+
+<p>
+Cash On Delivery Total : ₹ 
+{{ cod_total.total__sum|default:0 }}
+</p>
+
+<p>
+<b>
+Grand Total : ₹ 
+{{ grand_total.total__sum|default:0 }}
+</b>
+</p>
+
+
+</body>
+
+</html>

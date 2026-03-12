@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Order Success</title>
+</head>
+
+<body>
+
+<h2>✅ Order Successful</h2>
+
+<p><b>Name :</b> {{name}}</p>
+<p><b>Phone :</b> {{phone}}</p>
+<p><b>Product :</b> {{product}}</p>
+<p><b>Quantity :</b> {{quantity}}</p>
+<p><b>Total Amount :</b> ₹{{total}}</p>
+<p><b>Payment Method :</b> {{payment}}</p>
+
+<br>
+
+<button onclick="send()">Send WhatsApp</button>
+
+<script>
+
+function send(){
+
+alert("✅ Order Confirmed!");
+
+let message =
+"🛒 New Order Placed\n\n"+
+"👤 Name: {{name}}\n"+
+"📞 Phone: {{phone}}\n"+
+"🥛 Product: {{product}}\n"+
+"📦 Quantity: {{quantity}}\n"+
+"💰 Total Amount: ₹{{total}}\n"+
+"💳 Payment: {{payment}}\n\n"+
+"ஆரோக்கியம் உங்கள் வீட்டை தேடி வரும் – பசு மணம்.\n"+
+"Health that comes searching for your home – Pasu Manam.";
+
+let phone="916384229507";
+
+let url="https://wa.me/"+phone+"?text="+encodeURIComponent(message);
+
+window.open(url,"_blank");
+
+}
+
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Order Success</title>
+</head>
+
+<body>
+
+<h2>✅ Order Successful</h2>
+
+<p><b>Name :</b> {{name}}</p>
+<p><b>Phone :</b> {{phone}}</p>
+<p><b>Product :</b> {{product}}</p>
+<p><b>Quantity :</b> {{quantity}}</p>
+<p><b>Total Amount :</b> ₹{{total}}</p>
+<p><b>Payment Method :</b> {{payment}}</p>
+
+<br>
+
+<p>Sending order to WhatsApp...</p>
+<script>
+
+let name = "{{name}}";
+let phone = "{{phone}}";
+let address = "{{address}}";
+let product = "{{product}}";
+let quantity = "{{quantity}}";
+let total = "{{total}}";
+
+let message =
+"🛒 New Order Placed\n\n"+
+"👤 Name: "+name+"\n"+
+"📞 Phone: "+phone+"\n"+
+"📍 Address: "+address+"\n"+
+"🥛 Product: "+product+" ("+quantity+")\n"+
+"💰 Total Amount: ₹"+total+"\n"+
+"💳 Payment: Cash On Delivery";
+
+let phoneNumber = "916384229507";
+
+let url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+
+setTimeout(function(){
+
+alert("Order Placed Successfully!");
+
+window.open(url,"_blank");
+
+},2000);
+
+</script>
+
+</body>
+</html>

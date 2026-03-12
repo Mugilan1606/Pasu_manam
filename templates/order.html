@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Order - Pasu Manam</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f2f2f2;
+}
+
+.form-box{
+width:400px;
+margin:auto;
+margin-top:50px;
+padding:20px;
+background:white;
+border-radius:10px;
+box-shadow:0px 0px 10px gray;
+}
+
+h2{
+text-align:center;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin-top:10px;
+}
+
+button{
+width:100%;
+padding:10px;
+margin-top:20px;
+background:green;
+color:white;
+border:none;
+font-size:18px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="form-box">
+
+<h2>Welcome to Pasu Manam</h2>
+
+<h3>Milk Order</h3>
+
+<form action="/payment/" method="post">
+    {% csrf_token %}
+
+
+Name
+<input type="text" name="name" required>
+
+Phone
+<input type="text" name="phone" required>
+
+Address
+<input type="text" name="address" required>
+
+Product
+<select id="product" onchange="changeProduct()">
+<option value="">Select Product</option>
+<option value="milk">Milk</option>
+<option value="curd">Curd</option>
+<option value="ghee">Ghee</option>
+</select>
+
+Product Size
+<select name="product" id="size" onchange="calculate()">
+<option>Select Size</option>
+</select>
+
+Quantity
+<input type="number" name="quantity" id="quantity" value="1" onchange="calculate()">
+
+Total (₹)
+<input type="text" name="total" id="total" readonly>
+
+<button type="submit">Next</button>
+
+</form>
+
+</div>
+
+
+<script>
+
+function changeProduct(){
+
+let product=document.getElementById("product").value;
+let size=document.getElementById("size");
+
+size.innerHTML="";
+
+if(product=="milk"){
+
+size.innerHTML=`
+<option data-price="15">Milk 250ml - ₹15</option>
+<option data-price="30">Milk 500ml - ₹30</option>
+<option data-price="60">Milk 1 Litre - ₹60</option>
+`;
+
+}
+
+if(product=="curd"){
+
+size.innerHTML=`
+<option data-price="10">Curd 100ml - ₹10</option>
+<option data-price="50">Curd 250ml - ₹50</option>
+<option data-price="100">Curd 1 Litre - ₹100</option>
+`;
+
+}
+
+if(product=="ghee"){
+
+size.innerHTML=`
+<option data-price="80">Ghee 250ml - ₹80</option>
+<option data-price="160">Ghee 500ml - ₹160</option>
+<option data-price="320">Ghee 1 Litre - ₹320</option>
+`;
+
+}
+
+calculate();
+
+}
+
+function calculate(){
+
+let size=document.getElementById("size");
+
+let price=size.options[size.selectedIndex].getAttribute("data-price");
+
+let quantity=document.getElementById("quantity").value;
+
+let total=price*quantity;
+
+document.getElementById("total").value=total;
+
+}
+
+</script>
+
+</body>
+</html>

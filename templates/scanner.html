@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Scan and Pay</title>
+</head>
+
+<body>
+
+<h2>📱 Scan and Pay</h2>
+
+<img src="/static/images/scanner1.jpeg" width="300">
+
+<br><br>
+
+<p>Please scan the QR and complete the payment...</p>
+
+<script>
+
+setTimeout(function(){
+
+alert("✅ Payment Successful!");
+
+var name = "{{name}}";
+var phone = "{{phone}}";
+var address = "{{address}}";
+var product = "{{product}}";
+var quantity = "{{quantity}}";
+var total = "{{total}}";
+
+var msg =
+"🛒 New Order Placed\n\n"+
+"👤 Name: "+name+"\n"+
+"📞 Phone: "+phone+"\n"+
+"📍 Address: "+address+"\n\n"+
+"🥛 Product: "+product+" ("+quantity+")\n"+
+"💰 Total Amount: ₹"+total+"\n"+
+"💳 Payment: Online payment\n\n"+
+"ஆரோக்கியம் உங்கள் வீட்டை தேடி வரும் – பசு மணம்.\n"+
+"Health that comes searching for your home – Pasu Manam.";
+
+var url="https://wa.me/916384229507?text="+encodeURIComponent(msg);
+
+window.open(url,"_blank");
+
+window.location.href=
+"/success/?name="+name+
+"&phone="+phone+
+"&address="+address+
+"&product="+product+
+"&quantity="+quantity+
+"&total="+total+
+"&payment=Online";
+
+},10000); // 5 seconds delay
+
+</script>
+
+</body>
+</html>
